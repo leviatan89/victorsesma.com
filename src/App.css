@@ -119,6 +119,34 @@
 	max-width:100%;
 	height:23em;
 }
+/*
+	FOOTER
+*/
+.Footer{
+	width: 100%;
+	margin:auto;
+	position: fixed;
+	bottom:0px;
+}
+.Footer ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #030202;
+}
+.Footer li{
+	float:left;
+	width:33.33%;
+}
+.Footer a{
+	display: block;
+	color: white;
+	text-align: center;
+	padding:0.3em;
+	text-decoration: none;
+	font-size: 0.6em;
+}
 
 @media only screen and (max-width: 826px) {
 	.Person-summary, .Header-menu-item, .Life-event{
@@ -131,5 +159,8 @@
 		left:0;
 		width: 100%;
 		height: 50%;
+	}
+	.Footer{
+		position:relative;
 	}
 }

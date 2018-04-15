@@ -7,23 +7,24 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-			<Router>
+		<Router>
 	      <div className="App">
 					<Header conf={this.props.conf} />
 					<Switch>
-					<Route path="/" exact strict component={Home}/>
-					<Route path="/blog" render={() => <Blog conf={this.props.conf} />} />
-					<Route
-					  path="/curriculum-vitae"
-					  render={() => (
-					    <CurriculumVitae {...this.props} />
-					  )}
-					/>
-					<Route path="/contact-me" component={ContactMe} />
-					<Route component={My404Component} />
+						<Route path="/" exact strict component={Home}/>
+						<Route path="/blog" render={() => <Blog conf={this.props.conf} />} />
+						<Route
+						path="/curriculum-vitae"
+						render={() => (
+							<CurriculumVitae {...this.props} />
+						)}
+						/>
+						<Route path="/contact-me" component={ContactMe} />
+						<Route component={My404Component} />
 					</Switch>
+					<Footer />
 	      </div>
-			</Router>
+		</Router>
     );
   }
 }
@@ -266,6 +267,26 @@ class PersonText extends Component{
 				<p className="Person-line">
 					{this.props.conf.candidateInfo.summaryLines}
 				</p>
+			</div>
+		);
+	}
+}
+
+class Footer extends Component{
+	render(){
+		return(
+			<div className="Footer">
+				<ul>
+					<li>
+						<a href="https://github.com/leviatan89" target="_blank" rel="noopener noreferrer">Source Code</a>
+					</li>
+					<li>
+						<a href="https://cli.ginernet.com/aff.php?aff=135" target="_blank" rel="noopener noreferrer">Hosted by GINERNET</a>
+					</li>
+					<li>
+						<a href="https://twitter.com/VictorSesma_" target="_blank" rel="noopener noreferrer">Twitter</a>
+					</li>
+				</ul>
 			</div>
 		);
 	}

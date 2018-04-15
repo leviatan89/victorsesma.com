@@ -43,6 +43,9 @@ class Ad extends Component {
 
 
 class ContactMe extends Component{
+	componentDidMount() {
+		document.title = "Contact Me - Victor Sesma";
+	}
 	render(){
 		return (
 			<p>You can write to <img src={email} alt="Victor Email Address" /></p>
@@ -52,6 +55,9 @@ class ContactMe extends Component{
 
 
 class Blog extends Component{
+	componentDidMount() {
+		document.title = "Blog - Victor Sesma";
+	}
 	render(){
 		return (
 			<BlogPosts conf={this.props.conf} />
@@ -86,6 +92,9 @@ class BlogPost extends Component{
 
 
 class Home extends Component{
+	componentDidMount() {
+		document.title = "Home - Victor Sesma";
+	}
 	render(){
 		return (
 			<h1>Home</h1>
@@ -103,6 +112,7 @@ class CurriculumVitae extends Component{
 	}
 
 	componentDidMount() {
+		document.title = "Curriculum Vitae - Victor Sesma";
 		fetch("https://api.victorsesma.com/cv/")
 			.then(res => res.json())
 			.then(
@@ -207,7 +217,6 @@ class PersonImg extends Component{
 
 class YouTube extends Component{
 	render(){
-		console.log('rendering',this.props);
 		var videoSrc = "https://www.youtube.com/embed/" +
 				this.props.video + "?autoplay=" +
 				this.props.autoplay + "&rel=" +

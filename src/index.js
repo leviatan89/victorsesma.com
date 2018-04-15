@@ -11,25 +11,6 @@ const CONF = {
 		'surname':'Sesma Ramon',
 		'summaryLines':'Passion Driven Dev',
 	},
-	/*'lifeEvents':
-		{
-			0:{
-				'shownOrder':'0',
-				'startDate':'2016-06-05',
-				'endDate':'Current Job',
-				'name':'Full Stack Developer in SmarterClick.com',
-				'summary':'PHP, JavaScript, CSS, HTML',
-				'description':'Full Stack Developer in SmarterClick.com. Building all the back-end and front-end internal systems.'
-			},
-			1:{
-				'shownOrder':'1',
-				'startDate':'2015-05-05',
-				'endDate':'2016-06-01',
-				'name':'Intern in WatchFit.com',
-				'summary':'IT Intern in WatchFit.com',
-				'description':'I did task of project management and developer, assisting to the CTO.'
-			}
-		},*/
 		'blogPosts':
 		{
 			0:{

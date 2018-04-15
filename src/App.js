@@ -93,11 +93,43 @@ class Home extends Component{
 	}
 }
 class CurriculumVitae extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			error: null,
+			isLoaded: false,
+			lifeEvents: []
+		};
+	}
+
+	componentDidMount() {
+		fetch("https://api.victorsesma.com/cv/")
+			.then(res => res.json())
+			.then(
+				(result) => {
+					console.log("result is", result);
+					this.setState({
+						isLoaded: true,
+						lifeEvents: result
+					});
+				},
+				// Note: it's important to handle errors here
+				// instead of a catch() block so that we don't swallow
+				// exceptions from actual bugs in components.
+				(error) => {
+					this.setState({
+						isLoaded: true,
+						error
+					});
+				}
+			)
+	}
+
 	render(){
 		return (
 			<section>
-				{Object.keys(this.props.conf.lifeEvents).map((lifeEvent)=>
-					<LifeEvent key={this.props.conf.lifeEvents[lifeEvent].shownOrder} lifeEvent={this.props.conf.lifeEvents[lifeEvent]}/>
+				{Object.keys(this.state.lifeEvents).map((lifeEvent)=>
+					<LifeEvent key={this.state.lifeEvents[lifeEvent].ShownOrder} lifeEvent={this.state.lifeEvents[lifeEvent]}/>
 				)}
 			</section>
 		);
@@ -226,15 +258,15 @@ class LifeEvent extends Component{
 				<article className="Life-event">
 					<div>
 						<div className="Life-event-date">
-						{this.props.lifeEvent.startDate}-{this.props.lifeEvent.endDate}
+						{this.props.lifeEvent.StartDate}-{this.props.lifeEvent.EndDate}
 						</div>
 						<div className="Life-event-title">
-						{this.props.lifeEvent.name}
-						<span className="Life-event-summary">{this.props.lifeEvent.summary}</span>
+						{this.props.lifeEvent.Name}
+						<span className="Life-event-summary">{this.props.lifeEvent.Summary}</span>
 						</div>
 					</div>
 					<div>
-						<p>{this.props.lifeEvent.description}</p>
+						<p>{this.props.lifeEvent.Description}</p>
 					</div>
 				</article>
 		);

@@ -11,7 +11,7 @@ const CONF = {
 		'surname':'Sesma Ramon',
 		'summaryLines':'Passion Driven Dev',
 	},
-	'lifeEvents':
+	/*'lifeEvents':
 		{
 			0:{
 				'shownOrder':'0',
@@ -29,7 +29,7 @@ const CONF = {
 				'summary':'IT Intern in WatchFit.com',
 				'description':'I did task of project management and developer, assisting to the CTO.'
 			}
-		},
+		},*/
 		'blogPosts':
 		{
 			0:{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import userImage from './victorSesma.png';
 import email from './email.png';
 import './App.css';
@@ -10,6 +10,7 @@ class App extends Component {
 			<Router>
 	      <div className="App">
 					<Header conf={this.props.conf} />
+					<Switch>
 					<Route path="/" exact strict component={Home}/>
 					<Route path="/blog" render={() => <Blog conf={this.props.conf} />} />
 					<Route
@@ -19,12 +20,25 @@ class App extends Component {
 					  )}
 					/>
 					<Route path="/contact-me" component={ContactMe} />
+					<Route component={My404Component} />
+					</Switch>
 	      </div>
 			</Router>
     );
   }
 }
 
+
+class My404Component extends Component {
+	render() {
+		return (
+			<article>
+				<h2>404</h2>
+				<p>Sorry, that page doesn’t exist!</p>
+			</article>
+		);
+	}
+}
 
 class Ad extends Component {
 	componentDidMount() {
@@ -117,7 +131,7 @@ class CurriculumVitae extends Component{
 			.then(res => res.json())
 			.then(
 				(result) => {
-					console.log("result is", result);
+					// console.log("result is", result);
 					this.setState({
 						isLoaded: true,
 						lifeEvents: result
@@ -147,9 +161,6 @@ class CurriculumVitae extends Component{
 }
 
 class Header extends Component{
-	constructor(props) {
-		super(props);
-	}
 	componentDidMount() {
 		const s = document.createElement('script');
 		s.type = 'text/javascript';

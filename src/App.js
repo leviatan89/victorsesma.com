@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 //https://www.npmjs.com/package/react-twitter-embed
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed'; 
+import { TwitterTimelineEmbed } from 'react-twitter-embed'; 
 import userImage from './victorSesma.png';
 import email from './email.png';
 import './App.css';

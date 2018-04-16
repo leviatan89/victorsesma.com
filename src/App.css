@@ -137,7 +137,7 @@
 }
 .Footer li{
 	float:left;
-	width:33.33%;
+	width:25%;
 }
 .Footer a{
 	display: block;
@@ -146,6 +146,11 @@
 	padding:0.3em;
 	text-decoration: none;
 	font-size: 0.6em;
+}
+
+.Twitter-container{
+	width:20%;
+	margin:auto;
 }
 
 @media only screen and (max-width: 826px) {

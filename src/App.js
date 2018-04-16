@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+//https://www.npmjs.com/package/react-twitter-embed
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed'; 
 import userImage from './victorSesma.png';
 import email from './email.png';
 import './App.css';
@@ -112,7 +114,16 @@ class Home extends Component{
 	}
 	render(){
 		return (
-			<h1>Home</h1>
+			<article>
+				<h1>Welcome to Victor Sesma's website</h1>
+				<div className="Twitter-container">
+					<TwitterTimelineEmbed
+						sourceType="profile"
+						screenName="VictorSesma_"
+						options={{ height: 400 }}
+					/>
+				</div>
+			</article>
 		);
 	}
 }
@@ -284,7 +295,10 @@ class Footer extends Component{
 						<a href="https://cli.ginernet.com/aff.php?aff=135" target="_blank" rel="noopener noreferrer">Hosted by GINERNET</a>
 					</li>
 					<li>
-						<a href="https://twitter.com/VictorSesma_" target="_blank" rel="noopener noreferrer">Twitter</a>
+						<a href="https://twitter.com/VictorSesma" target="_blank" rel="noopener noreferrer">Twitter</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/v%C3%ADctor-sesma-ram%C3%B3n-3b2291104/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 					</li>
 				</ul>
 			</div>

@@ -295,7 +295,7 @@ class Footer extends Component{
 						<a href="https://cli.ginernet.com/aff.php?aff=135" target="_blank" rel="noopener noreferrer">Hosted by GINERNET</a>
 					</li>
 					<li>
-						<a href="https://twitter.com/VictorSesma" target="_blank" rel="noopener noreferrer">Twitter</a>
+						<a href="https://twitter.com/VictorSesma_" target="_blank" rel="noopener noreferrer">Twitter</a>
 					</li>
 					<li>
 						<a href="https://www.linkedin.com/in/v%C3%ADctor-sesma-ram%C3%B3n-3b2291104/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

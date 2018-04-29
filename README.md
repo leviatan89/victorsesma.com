@@ -1,11 +1,12 @@
 # Welcome to <a href="https://victorsesma.com" target="_blank">VictorSesma.com</a> frontend React Repository
 This App is what you see when entering to the website <a href="https://victorsesma.com" target="_blank">VictorSesma.com</a>
 It is built using react as front-end part and GoLang as backend in my <a href="https://github.com/leviatan89/api.victorsesma.com" targect="_blank">other project</a>
-## Hot to Depoy
-1. Install React Dev App
+## How to Depoy
+1. Install npm and nodejs
 2. Clone the repository
-3. Run `npm run build`
-4. Copy all the files under `build` to your static web server
+3. `npm install` to download all the npm dependencies
+4. Run `npm run build`
+5. Copy all the files under `build` to your static web server
 
 # React Doc
 

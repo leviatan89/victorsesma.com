@@ -311,16 +311,16 @@ class LifeEvent extends Component{
 
 		return(
 				<article className="Life-event">
-					<div>
+					<div className="Life-event-headline">
 						<div className="Life-event-date">
-						{this.props.lifeEvent.StartDate}-{this.props.lifeEvent.EndDate}
+							{this.props.lifeEvent.StartDate}-{this.props.lifeEvent.EndDate}
 						</div>
 						<div className="Life-event-title">
-						{this.props.lifeEvent.Name}
-						<span className="Life-event-summary">{this.props.lifeEvent.Summary}</span>
+							<h1 className="Life-event-name">{this.props.lifeEvent.Name}</h1>
+							<span className="Life-event-summary">{this.props.lifeEvent.Summary}</span>
 						</div>
 					</div>
-					<div>
+					<div className="Life-event-description">
 						<p>{this.props.lifeEvent.Description}</p>
 					</div>
 				</article>

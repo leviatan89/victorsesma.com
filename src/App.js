@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 //https://www.npmjs.com/package/react-twitter-embed
 import { TwitterTimelineEmbed } from 'react-twitter-embed'; 
+//https://github.com/nfl/react-helmet
+import {Helmet} from "react-helmet";
 import userImage from './victorSesma.png';
 import linkedinIcon from './linkedIn.svg';
 import twitterIcon from './twitter.svg';
@@ -22,10 +24,10 @@ class App extends Component {
 						<Route path="/" exact strict component={Home}/>
 						<Route path="/blog" render={() => <Blog conf={this.props.conf} />} />
 						<Route
-						path="/curriculum-vitae"
-						render={() => (
-							<CurriculumVitae {...this.props} />
-						)}
+							path="/curriculum-vitae"
+							render={() => (
+								<CurriculumVitae {...this.props} />
+							)}
 						/>
 						<Route path="/contact-me" component={ContactMe} />
 						<Route component={My404Component} />
@@ -123,12 +125,14 @@ class ContactHeader extends Component{
 }
 
 class ContactMe extends Component{
-	componentDidMount() {
-		document.title = "Contact Me - Victor Sesma";
-	}
 	render(){
 		return (
 			<article>
+			<Helmet>
+				<title>Contact Me - Victor Sesma</title>
+				<meta property="og:image" content={userImage} />
+				<link rel="canonical" href="https://victorsesma.com/contact-me" />
+			</Helmet>
 				<ContactHeader />
 			</article>
 		);
@@ -137,12 +141,16 @@ class ContactMe extends Component{
 
 
 class Blog extends Component{
-	componentDidMount() {
-		document.title = "Blog - Victor Sesma";
-	}
 	render(){
 		return (
-			<BlogPosts conf={this.props.conf} />
+			<div>
+				<Helmet>
+					<title>Blog - Victor Sesma</title>
+					<meta property="og:image" content={userImage} />
+					<link rel="canonical" href="https://victorsesma.com/blog" />
+				</Helmet>
+				<BlogPosts conf={this.props.conf} />
+			</div>
 		);
 	}
 }
@@ -174,12 +182,14 @@ class BlogPost extends Component{
 
 
 class Home extends Component{
-	componentDidMount() {
-		document.title = "Home - Victor Sesma";
-	}
 	render(){
 		return (
 			<article>
+				<Helmet>
+					<title>Home - Victor Sesma</title>
+					<meta property="og:image" content={userImage} />
+					<link rel="canonical" href="https://victorsesma.com/" />
+				</Helmet>
 				<h1>Welcome to Victor Sesma's website</h1>
 				<div className="Twitter-container">
 					<TwitterTimelineEmbed
@@ -203,7 +213,6 @@ class CurriculumVitae extends Component{
 	}
 
 	componentDidMount() {
-		document.title = "Curriculum Vitae - Victor Sesma";
 		fetch("https://api.victorsesma.com/cv/")
 			.then(res => res.json())
 			.then(
@@ -229,6 +238,11 @@ class CurriculumVitae extends Component{
 	render(){
 		return (
 			<section>
+				<Helmet>
+					<title>Curriculum Vitae - Victor Sesma</title>
+					<meta property="og:image" content={userImage} />
+					<link rel="canonical" href="https://victorsesma.com/curriculum-vitae" />
+				</Helmet>
 				{Object.keys(this.state.lifeEvents).map((lifeEvent)=>
 					<LifeEvent key={this.state.lifeEvents[lifeEvent].ShownOrder} lifeEvent={this.state.lifeEvents[lifeEvent]}/>
 				)}

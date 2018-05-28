@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.App-link{
+	text-decoration: none;
+	color:black;
+}
+
 .User-img {
 	padding: 1em;
 	max-height: 6em;
@@ -171,6 +176,11 @@ Life-event-headline{
 .Twitter-container{
 	width:20%;
 	margin:auto;
+}
+
+
+.Contact-social{
+	width: 2em;
 }
 
 @media only screen and (max-width: 826px) {

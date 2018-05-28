@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-do
 //https://www.npmjs.com/package/react-twitter-embed
 import { TwitterTimelineEmbed } from 'react-twitter-embed'; 
 import userImage from './victorSesma.png';
+import linkedinIcon from './linkedIn.svg';
+import twitterIcon from './twitter.svg';
+import githubIcon from './github.svg';
+import linkedinIconHover from './linkedInHover.svg';
+import twitterIconHover from './twitterHover.svg';
+import githubIconHover from './githubHover.svg';
 import email from './email.png';
 import './App.css';
 
@@ -58,6 +64,63 @@ class Ad extends Component {
 	}
 }
 
+class ContactHeader extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			imageLinkedin: linkedinIcon,
+			imageTwitter: twitterIcon,
+			imageGithub: githubIcon
+		};
+	}
+	handleMouseOverLinkedinEnter() {
+		this.setState({
+		 	imageLinkedin: linkedinIconHover
+		 });
+	}
+	handleMouseOverLinkedinLeave() {
+		this.setState({
+		 	imageLinkedin: linkedinIcon
+		 });
+	}
+	handleMouseOverTwitterEnter() {
+		this.setState({
+		 	imageTwitter: twitterIconHover
+		 });
+	}
+	handleMouseOverTwitterLeave() {
+		this.setState({
+		 	imageTwitter: twitterIcon
+		 });
+	}	
+	handleMouseOverGithubEnter() {
+		this.setState({
+		 	imageGithub: githubIconHover
+		 });
+	}
+	handleMouseOverGithubLeave() {
+		this.setState({
+		 	imageGithub: githubIcon
+		 });
+	}	
+	render(){
+		return (
+			<div>
+				<h1>Get in Touch</h1>
+				<a href="https://www.linkedin.com/in/v%C3%ADctor-sesma-ram%C3%B3n-3b2291104/" target="_blank" rel="noopener noreferrer">
+					<img className="Contact-social" onMouseEnter={this.handleMouseOverLinkedinEnter.bind(this)} onMouseLeave={this.handleMouseOverLinkedinLeave.bind(this)} src={this.state.imageLinkedin} alt="Linkedin" />
+				</a>
+				<a href="https://twitter.com/VictorSesma_" target="_blank" rel="noopener noreferrer">
+					<img className="Contact-social" onMouseEnter={this.handleMouseOverTwitterEnter.bind(this)} onMouseLeave={this.handleMouseOverTwitterLeave.bind(this)} src={this.state.imageTwitter} alt="Twitter" /> 
+				</a>
+				<a href="https://github.com/leviatan89" target="_blank" rel="noopener noreferrer">
+					<img className="Contact-social" onMouseEnter={this.handleMouseOverGithubEnter.bind(this)} onMouseLeave={this.handleMouseOverGithubLeave.bind(this)} src={this.state.imageGithub} alt="Github" /> 
+				</a>
+				<p>Or email me to <a className="App-link" href="mailto:leviatan.89@gmail.com?Subject=Can%20we%20talk?">leviatan.89@gmail.com</a></p>
+			</div>
+		);
+	}
+}
 
 class ContactMe extends Component{
 	componentDidMount() {
@@ -65,7 +128,9 @@ class ContactMe extends Component{
 	}
 	render(){
 		return (
-			<p>You can write to <img src={email} alt="Victor Email Address" /></p>
+			<article>
+				<ContactHeader />
+			</article>
 		);
 	}
 }

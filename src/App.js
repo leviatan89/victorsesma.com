@@ -155,12 +155,45 @@ class Blog extends Component{
 	}
 }
 class BlogPosts extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			error: null,
+			isLoaded: false,
+			blogPosts: []
+		};
+	}
+	componentDidMount() {
+		fetch("https://api.victorsesma.com/blog/")
+			.then(res => res.json())
+			.then(
+				(result) => {
+					// console.log("result is", result);
+					this.setState({
+						isLoaded: true,
+						blogPosts: result
+					});
+				},
+				// Note: it's important to handle errors here
+				// instead of a catch() block so that we don't swallow
+				// exceptions from actual bugs in components.
+				(error) => {
+					this.setState({
+						isLoaded: true,
+						error
+					});
+				}
+			)
+	}
+
 	render(){
 		return (
 			<section>
 				{
-					Object.keys(this.props.conf.blogPosts).map((post) =>
-					<BlogPost conf={this.props.conf.blogPosts[post]} key={post}/>
+					// Object.keys(this.props.conf.blogPosts).map((post) =>
+					// <BlogPost conf={this.props.conf.blogPosts[post]} key={post}/>
+						Object.keys(this.state.blogPosts).map((post) =>
+						<BlogPost conf={this.state.blogPosts[post]} key={post} />
 					)
 				}
 			</section>

@@ -412,6 +412,9 @@ class Footer extends Component{
 					<li>
 						<a href="https://www.linkedin.com/in/victor-sesma-3b2291104/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 					</li>
+					<li>
+						<a href="https://www.goodreads.com/user/show/84385450-victor-sesma" target="_blank" rel="noopener noreferrer">goodreads</a>
+					</li>
 				</ul>
 			</div>
 		);

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
-//https://www.npmjs.com/package/react-twitter-embed
-import { TwitterTimelineEmbed } from 'react-twitter-embed'; 
-//https://github.com/nfl/react-helmet
 import {Helmet} from "react-helmet";
 import userImage from './victorSesma.png';
 import linkedinIcon from './linkedIn.svg';
@@ -22,7 +19,6 @@ class App extends Component {
 					<Header conf={this.props.conf} />
 					<Switch>
 						<Route path="/" exact strict component={Home}/>
-						<Route path="/blog" render={() => <Blog conf={this.props.conf} />} />
 						<Route
 							path="/curriculum-vitae"
 							render={() => (
@@ -109,7 +105,7 @@ class ContactHeader extends Component{
 		return (
 			<div>
 				<h1>Get in Touch</h1>
-				<a href="https://www.linkedin.com/in/v%C3%ADctor-sesma-ram%C3%B3n-3b2291104/" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.linkedin.com/in/victor-sesma-3b2291104" target="_blank" rel="noopener noreferrer">
 					<img className="Contact-social" onMouseEnter={this.handleMouseOverLinkedinEnter.bind(this)} onMouseLeave={this.handleMouseOverLinkedinLeave.bind(this)} src={this.state.imageLinkedin} alt="Linkedin" />
 				</a>
 				<a href="https://twitter.com/VictorSesma_" target="_blank" rel="noopener noreferrer">
@@ -118,7 +114,7 @@ class ContactHeader extends Component{
 				<a href="https://github.com/leviatan89" target="_blank" rel="noopener noreferrer">
 					<img className="Contact-social" onMouseEnter={this.handleMouseOverGithubEnter.bind(this)} onMouseLeave={this.handleMouseOverGithubLeave.bind(this)} src={this.state.imageGithub} alt="Github" /> 
 				</a>
-				<p>Or email me to <a className="App-link" href="mailto:leviatan.89@gmail.com?Subject=Can%20we%20talk?">leviatan.89@gmail.com</a></p>
+				<p>Or email me to <a className="App-link" href="mailto:hi@victorsesma.com?Subject=Can%20we%20talk?">hi@victorsesma.com</a></p>
 			</div>
 		);
 	}
@@ -139,81 +135,6 @@ class ContactMe extends Component{
 	}
 }
 
-
-class Blog extends Component{
-	render(){
-		return (
-			<div>
-				<Helmet>
-					<title>Blog - Victor Sesma</title>
-					<meta property="og:image" content={userImage} />
-					<link rel="canonical" href="https://victorsesma.com/blog" />
-				</Helmet>
-				<BlogPosts conf={this.props.conf} />
-			</div>
-		);
-	}
-}
-class BlogPosts extends Component{
-	constructor(props) {
-		super(props);
-		this.state = {
-			error: null,
-			isLoaded: false,
-			blogPosts: []
-		};
-	}
-	componentDidMount() {
-		fetch("https://api.victorsesma.com/blog/")
-			.then(res => res.json())
-			.then(
-				(result) => {
-					// console.log("result is", result);
-					this.setState({
-						isLoaded: true,
-						blogPosts: result
-					});
-				},
-				// Note: it's important to handle errors here
-				// instead of a catch() block so that we don't swallow
-				// exceptions from actual bugs in components.
-				(error) => {
-					this.setState({
-						isLoaded: true,
-						error
-					});
-				}
-			)
-	}
-
-	render(){
-		return (
-			<section>
-				{
-					// Object.keys(this.props.conf.blogPosts).map((post) =>
-					// <BlogPost conf={this.props.conf.blogPosts[post]} key={post}/>
-						Object.keys(this.state.blogPosts).map((post) =>
-						<BlogPost conf={this.state.blogPosts[post]} key={post} />
-					)
-				}
-			</section>
-		);
-	}
-}
-class BlogPost extends Component{
-	render(){
-		return (
-			<article>
-				<h1>{this.props.conf.postTitle}</h1>
-				<p>{this.props.conf.postContent}</p>
-				<p><i>By: {this.props.conf.createdBy} on {this.props.conf.createdOn}</i></p>
-			</article>
-		);
-	}
-}
-
-
-
 class Home extends Component{
 	render(){
 		return (
@@ -223,13 +144,16 @@ class Home extends Component{
 					<meta property="og:image" content={userImage} />
 					<link rel="canonical" href="https://victorsesma.com/" />
 				</Helmet>
-				<h1>Welcome to Victor Sesma's website</h1>
-				<div className="Twitter-container">
-					<TwitterTimelineEmbed
-						sourceType="profile"
-						screenName="VictorSesma_"
-						options={{ height: 400 }}
-					/>
+				<div className="Content">
+					<h1>Who Am I?</h1>
+					<p>I am a software engiennier based in London. In case this is important, I am Spanish and grew up in Alicante, the city I have lived in most of the time before I moved in to London.</p>
+					<p>I have been doing professional programing for the last 4 years in 2 different companies.</p>
+					<p>My career started with PHP and then swithechd to GoLang. I have done some experimetns in ReactJS. I am the Raspberry Pi type of geek.</p>
+					<h1>What I Am Good At?</h1>
+					<p>In my last company, I have been diving into the GoLang world, attending meetups and learning on my day to day job. My company have high code testing standards that we all match turning into a TDD development culture.</p>
+					<h1>What Are My Passions?</h1>
+					<p>The development world is a continuous learning universe. I love when I have the opportunity of learning at work.</p>
+					<p>In my free time, I enjoy reading, meeting my friends, new people and travelling.</p>
 				</div>
 			</article>
 		);
@@ -246,24 +170,44 @@ class CurriculumVitae extends Component{
 	}
 
 	componentDidMount() {
-		fetch("https://api.victorsesma.com/cv/")
-			.then(res => res.json())
-			.then(
-				(result) => {
-					// console.log("result is", result);
-					this.setState({
-						isLoaded: true,
-						lifeEvents: result
-					});
-				},
-				// Note: it's important to handle errors here
-				// instead of a catch() block so that we don't swallow
-				// exceptions from actual bugs in components.
-				(error) => {
-					this.setState({
-						isLoaded: true,
-						error
-					});
+			this.setState(
+				{
+					isLoaded:true,
+					lifeEvents: {
+						lifeEvent1: {
+							StartDate: "01/06/2018",
+							EndDate: "Now",
+							Name: "Software Engieneer",
+							Summary: `I help building the Filtered.com API`,
+							Description: `Build new backend features for filtered.com.`,
+							ShownOrder: 1
+						},
+						lifeEvent2:{
+							StartDate: "05/06/2016",
+							EndDate: "14/05/2018",
+							Name: "Full Stack Developer and Support Leader",
+							Summary: "Full Stack Developer and Support Leader in leading industry company SmarterClick.com. (London)",
+							Description: `As an small company in continuous grow, Smarter Click has challenged me from the beginning in different areas inside the tech and development world.`,
+							ShownOrder: 2
+						},
+						lifeEvent3:{
+							StartDate:"01/01/2016",
+							EndDate:"01/04/2016",
+							Name:"Project Manager",
+							Summary: `Project Manager for the IT department in WatchFit. Managing a team of 4 people: 3 remote workers
+and 1 intern in the office. (London)`,
+							Description:`- Project Management: Using Agile Methodology approach and RedMine as a project management
+software tool.
+- Testing: Ensuring that the software is ready to be deployed.
+- GitHub: Manage software versions with GigHub. Experience with its functionalities (branches, merges, checkouts, pull, push...)
+- Coding: front-end pages (HTHML/CSS) and PHP including a bit of Yii framework.
+- WordPress: Including fixing problems, changes, creating plug-ins for emails notification, Disqus integration...
+- SQL: Design for storing new features needs and SQL sentences for getting information.`,
+							ShownOrder: 3
+						},
+
+						
+					}
 				}
 			)
 	}
@@ -306,8 +250,7 @@ class Header extends Component{
 const Menu = (props) => {
     return (
 			<div className="Header-menu">
-				<div className="Header-menu-item"><NavLink to="/" exact activeClassName={"Header-in-page"}>Home</NavLink></div>
-				<div className="Header-menu-item"><NavLink to="/blog" activeClassName={"Header-in-page"}>Blog</NavLink></div>
+				<div className="Header-menu-item"><NavLink to="/" exact activeClassName={"Header-in-page"}>About Me</NavLink></div>
 				<div className="Header-menu-item"><NavLink to="/curriculum-vitae" activeClassName={"Header-in-page"}>Curriculum Vitae</NavLink></div>
 				<div className="Header-menu-item"><NavLink to="/contact-me" activeClassName={"Header-in-page"}>Contact Me</NavLink></div>
 			</div>
@@ -413,7 +356,7 @@ class Footer extends Component{
 						<a href="https://www.linkedin.com/in/victor-sesma-3b2291104/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 					</li>
 					<li>
-						<a href="https://www.goodreads.com/user/show/84385450-victor-sesma" target="_blank" rel="noopener noreferrer">goodreads</a>
+						<a href="https://www.goodreads.com/victor-sesma" target="_blank" rel="noopener noreferrer">goodreads</a>
 					</li>
 				</ul>
 			</div>

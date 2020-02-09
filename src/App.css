@@ -105,7 +105,7 @@ Life-event-headline{
 	overflow:auto;
 }
 .Header-menu-item{
-	width:25%;
+	width:33.33%;
 	float:left;
 }
 .Header-menu a{
@@ -183,6 +183,12 @@ Life-event-headline{
 	width: 2em;
 }
 
+.Content{
+	width:40%;
+	margin:auto;
+	padding-bottom:0.5em;
+}
+
 @media only screen and (max-width: 826px) {
 	.Person-summary, .Header-menu-item, .Life-event{
 		width:98%;
@@ -198,5 +204,9 @@ Life-event-headline{
 	}
 	.Footer{
 		position:relative;
+	}
+	.Content{
+		width:98%;
+		margin:auto;
 	}
 }
